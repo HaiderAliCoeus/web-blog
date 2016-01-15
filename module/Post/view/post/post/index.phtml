@@ -1,0 +1,28 @@
+<?php
+$title = 'All Posts';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('post', array('action'=>'add'));?>">Add new Post</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($posts as $post) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($post->author);?></td>
+            <td><?php echo $this->escapeHtml($post->title);?></td>
+            <td>
+                <a href="<?php echo $this->url('post',
+                    array('action'=>'edit', 'id' => $post->id));?>">Edit</a>
+                <a href="<?php echo $this->url('post',
+                    array('action'=>'delete', 'id' => $post->id));?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>

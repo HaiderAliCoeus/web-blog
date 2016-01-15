@@ -1,0 +1,27 @@
+<?php
+$title = 'Add new Post';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+
+<?php
+$form->setAttribute('action', $this->url('post', array('action' => 'add')));
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+<div class="row">
+    <div class="col-md-6">
+<?php
+        echo $this->formHidden($form->get('id'));
+        echo $this->formRow($form->get('title'));
+?>
+</div>
+</div>
+
+<?php
+echo $this->formRow($form->get('author'));
+echo $this->formRow($form->get('body'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
