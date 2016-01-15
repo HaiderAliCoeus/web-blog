@@ -6,6 +6,7 @@ return array(
      'controllers' => array(
          'invokables' => array(
              'Album\Controller\Album' => 'Album\Controller\AlbumController',
+             'Album\Controller\List' => 'Album\Controller\ListController',
          ),
      ),
      // The following section is new and should be added to your file
@@ -25,11 +26,28 @@ return array(
                      ),
                  ),
              ),
+             'list' => array(
+                 'type'    => 'segment',
+                 'options' => array(
+                     'route'    => '/list[/][:action][/:id]',
+                     'constraints' => array(
+                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                         'id'     => '[0-9]+',
+                     ),
+                     'defaults' => array(
+                         'controller' => 'Album\Controller\List',
+                         'action'     => 'index',
+                     ),
+                 ),
+             ),
          ),
+
+
      ),
      'view_manager' => array(
          'template_path_stack' => array(
              'album' => __DIR__ . '/../view',
+             'list' => __DIR__ . '/../view',
          ),
      ),
     // Doctrine config

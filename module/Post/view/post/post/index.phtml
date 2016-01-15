@@ -15,13 +15,13 @@ $this->headTitle($title);
     </tr>
     <?php foreach ($posts as $post) : ?>
         <tr>
-            <td><?php echo $this->escapeHtml($post->author);?></td>
-            <td><?php echo $this->escapeHtml($post->title);?></td>
+            <td><?php echo $this->escapeHtml($post->getAuthor());?></td>
+            <td><?php echo $this->escapeHtml($post->getTitle());?></td>
             <td>
                 <a href="<?php echo $this->url('post',
-                    array('action'=>'edit', 'id' => $post->id));?>">Edit</a>
+                    array('action'=>'edit', 'id' => $post->getId()));?>">Edit</a>
                 <a href="<?php echo $this->url('post',
-                    array('action'=>'delete', 'id' => $post->id));?>">Delete</a>
+                    array('action'=>'delete', 'id' => $post->getId()));?>">Delete</a>
             </td>
         </tr>
     <?php endforeach; ?>

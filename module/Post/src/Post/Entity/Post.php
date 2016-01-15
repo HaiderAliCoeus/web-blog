@@ -9,40 +9,102 @@ use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
 
 /**
- * A music post.
- *
  * @ORM\Entity
  * @ORM\Table(name="post")
- * @property string $author
- * @property string $title
- * @property string $body
- * @property int $id
  */
-class Post implements InputFilterAwareInterface
+
+class Post
 {
     protected $inputFilter;
 
     /**
+     * @ORM\Column(type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer");
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=100)
      */
     protected $author;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=100)
      */
     protected $body;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=100)
      */
     protected $title;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * @param mixed $body
+     */
+    public function setBody($body)
+    {
+        $this->body = $body;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+
+
 
     /**
      * Magic getter to expose protected properties.
@@ -50,10 +112,10 @@ class Post implements InputFilterAwareInterface
      * @param string $property
      * @return mixed
      */
-    public function __get($property)
+/*    public function __get($property)
     {
         return $this->$property;
-    }
+    }*/
 
     /**
      * Magic setter to save protected properties.
@@ -61,10 +123,10 @@ class Post implements InputFilterAwareInterface
      * @param string $property
      * @param mixed $value
      */
-    public function __set($property, $value)
+/*    public function __set($property, $value)
     {
         $this->$property = $value;
-    }
+    }*/
 
     /**
      * Convert the object to an array.

@@ -43,7 +43,18 @@ class PostController extends AbstractActionController
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
-                $post->exchangeArray($form->getData());
+            $data = $form->getData();
+            $post->setAuthor($data['author']);
+                $post->setTitle($data['title']);
+                $post->setBody($data['body']);
+                $post->getId($data['id']);
+
+
+                /*echo "<pre>";
+                print_r($post);
+                exit;*/
+
+               // $post->exchangeArray($form->getData());
                 $this->getEntityManager()->persist($post);
                 $this->getEntityManager()->flush();
                 return $this->redirect()->toRoute('post');

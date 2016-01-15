@@ -13,7 +13,8 @@ return array(
         'DoctrineORMModule',
         'Post',
         'Album',
-        'Test'
+        'Test',
+        'Blog'
     ),
 
     // These are various options for the listeners attached to the ModuleManager
